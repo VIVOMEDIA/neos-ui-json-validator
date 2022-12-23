@@ -1,0 +1,7 @@
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          'VIVOMEDIA.NeosUI.JsonValidator:JsonValidator':
+            resource: resource://VIVOMEDIA.NeosUI.JsonValidator/Public/Validators/JsonValidator/Plugin.js

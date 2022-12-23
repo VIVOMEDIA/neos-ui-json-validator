@@ -1,0 +1,20 @@
+{
+  "description": "JsonValidator",
+  "license": "GNU GPLv3",
+  "private": true,
+  "scripts": {
+    "build": "neos-react-scripts build",
+    "watch": "neos-react-scripts watch"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "@neos-project/neos-ui-extensibility": "^7.0.0"
+  },
+  "dependencies": {
+    "typesafe-actions": "^5.1.0"
+
+  },
+  "neos": {
+    "buildTargetDirectory": "../../../Public/Validators/JsonValidator"
+  }
+}

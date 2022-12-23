@@ -1,0 +1,14 @@
+{
+    "name": "vivomedia/neos-ui-json-validator",
+    "type": "neos-plugin",
+    "description": "Json Validator for Neos UI",
+    "require": {
+        "neos/neos": "*",
+        "neos/neos-ui": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "VIVOMEDIA\\NeosUI\\JsonValidator\\": "Classes"
+        }
+    }
+}

@@ -396,6 +396,26 @@ module.exports = (0, _readFromConsumerApi2.default)('NeosProjectPackages')().Neo
 
 /***/ }),
 
+/***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _readFromConsumerApi = __webpack_require__(/*! ../../../../dist/readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js");
+
+var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _readFromConsumerApi2.default)('vendor')().React;
+
+/***/ }),
+
 /***/ "./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js ***!
@@ -927,26 +947,28 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _react = __webpack_require__(/*! react */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _neosUiI18n = __webpack_require__(/*! @neos-project/neos-ui-i18n */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/neosProjectPackages/neos-ui-i18n/index.js");
 
 var _neosUiI18n2 = _interopRequireDefault(_neosUiI18n);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var JsonValidator = function JsonValidator() {
-    return function (value) {
-        try {
-            if (value === "") {
-                return null;
-            }
-
-            JSON.parse(value);
-        } catch (error) {
-            return React.createElement(_neosUiI18n2.default, { id: "VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson", fallback: "Not a valid JSON string" });
+var JsonValidator = function JsonValidator(value) {
+    try {
+        if (value === "") {
+            return null;
         }
 
-        return null;
-    };
+        JSON.parse(value);
+    } catch (error) {
+        return _react2.default.createElement(_neosUiI18n2.default, { id: 'VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson', fallback: 'Not a valid JSON string' });
+    }
+
+    return null;
 };
 exports.default = JsonValidator;
 

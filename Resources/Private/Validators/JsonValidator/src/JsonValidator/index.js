@@ -1,7 +1,7 @@
+import React from 'react';
 import I18n from '@neos-project/neos-ui-i18n';
 
-const JsonValidator = () => {
-    return (value) => {
+const JsonValidator = (value) => {
         try {
             if (value === "") {
                 return null;
@@ -13,7 +13,6 @@ const JsonValidator = () => {
         }
 
         return null;
-    };
 
 }
 export default JsonValidator;

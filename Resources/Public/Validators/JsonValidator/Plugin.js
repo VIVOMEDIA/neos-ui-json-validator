@@ -376,6 +376,46 @@ exports.SynchronousMetaRegistry = SynchronousMetaRegistry_1["default"];
 
 /***/ }),
 
+/***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/neosProjectPackages/neos-ui-i18n/index.js":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/neosProjectPackages/neos-ui-i18n/index.js ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _readFromConsumerApi = __webpack_require__(/*! ../../../../dist/readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js");
+
+var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _readFromConsumerApi2.default)('NeosProjectPackages')().NeosUiI18n;
+
+/***/ }),
+
+/***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _readFromConsumerApi = __webpack_require__(/*! ../../../../dist/readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js");
+
+var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _readFromConsumerApi2.default)('vendor')().React;
+
+/***/ }),
+
 /***/ "./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js ***!
@@ -893,33 +933,44 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 
 /***/ }),
 
-/***/ "./src/JsonValidator/index.tsx":
-/*!*************************************!*\
-  !*** ./src/JsonValidator/index.tsx ***!
-  \*************************************/
+/***/ "./src/JsonValidator/index.js":
+/*!************************************!*\
+  !*** ./src/JsonValidator/index.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-exports.__esModule = true;
-var JsonValidatorFactory = function (_a) {
-    var i18nRegistry = _a.i18nRegistry;
-    return function (value) {
-        try {
-            if (value === "") {
-                return null;
-            }
-            JSON.parse(value);
-        }
-        catch (error) {
-            return i18nRegistry.translate('VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson', 'Not a valid JSON string');
-        }
-        return null;
-    };
-};
-exports["default"] = JsonValidatorFactory;
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _neosUiI18n = __webpack_require__(/*! @neos-project/neos-ui-i18n */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/neosProjectPackages/neos-ui-i18n/index.js");
+
+var _neosUiI18n2 = _interopRequireDefault(_neosUiI18n);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var JsonValidator = function JsonValidator(value) {
+    try {
+        if (value === "") {
+            return null;
+        }
+
+        JSON.parse(value);
+    } catch (error) {
+        return _react2.default.createElement(_neosUiI18n2.default, { id: 'VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson', fallback: 'Not a valid JSON string' });
+    }
+
+    return null;
+};
+exports.default = JsonValidator;
 
 /***/ }),
 
@@ -951,7 +1002,7 @@ var _neosUiExtensibility = __webpack_require__(/*! @neos-project/neos-ui-extensi
 
 var _neosUiExtensibility2 = _interopRequireDefault(_neosUiExtensibility);
 
-var _JsonValidator = __webpack_require__(/*! ./JsonValidator */ "./src/JsonValidator/index.tsx");
+var _JsonValidator = __webpack_require__(/*! ./JsonValidator */ "./src/JsonValidator/index.js");
 
 var _JsonValidator2 = _interopRequireDefault(_JsonValidator);
 
@@ -959,10 +1010,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _neosUiExtensibility2.default)('VIVOMEDIA.NeosUI.JsonValidator:JsonValidator', {}, function (globalRegistry) {
 
-    var i18nRegistry = globalRegistry.get('i18n');
     var validatorRegistry = globalRegistry.get('validators');
 
-    validatorRegistry.set('VIVOMEDIA.NeosUI.JsonValidator/Validation/JsonValidator', (0, _JsonValidator2.default)({ i18nRegistry: i18nRegistry }));
+    validatorRegistry.set('VIVOMEDIA.NeosUI.JsonValidator/Validation/JsonValidator', _JsonValidator2.default);
 });
 
 /***/ })

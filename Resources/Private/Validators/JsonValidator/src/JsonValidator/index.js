@@ -1,7 +1,7 @@
 import I18n from '@neos-project/neos-ui-i18n';
 
 const JsonValidator = () => {
-    return (value: any) => {
+    return (value) => {
         try {
             if (value === "") {
                 return null;

@@ -1,4 +1,6 @@
-const JsonValidatorFactory = ({ i18nRegistry } : {i18nRegistry: any}) => {
+import I18n from '@neos-project/neos-ui-i18n';
+
+const JsonValidator = () => {
     return (value: any) => {
         try {
             if (value === "") {
@@ -7,11 +9,11 @@ const JsonValidatorFactory = ({ i18nRegistry } : {i18nRegistry: any}) => {
 
             JSON.parse(value);
         } catch (error) {
-            return i18nRegistry.translate('VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson', 'Not a valid JSON string');
+            return <I18n id="VIVOMEDIA.NeosUI.JsonValidator:Main:NotValidJson" fallback="Not a valid JSON string"/>
         }
 
         return null;
     };
 
 }
-export default JsonValidatorFactory;
+export default JsonValidator;
